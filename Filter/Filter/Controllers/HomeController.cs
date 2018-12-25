@@ -10,7 +10,9 @@ namespace Filter.Controllers
     public class HomeController : Controller
     {
         //passing Razor
-        [CustomAuth(false)]
+        //[CustomAuth(false)] //applied to class CustomAuthAttributes
+        //[Authorize(Users ="admin")] //built-in aythorization
+        [Authorize]
         public string Index()
         {
             return "This is the Index action on the Home controller";

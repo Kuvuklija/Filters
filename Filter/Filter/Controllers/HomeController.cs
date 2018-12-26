@@ -11,8 +11,8 @@ namespace Filter.Controllers
     {
         //passing Razor
         //[CustomAuth(false)] //applied to class CustomAuthAttributes
-        //[Authorize(Users ="admin")] //built-in aythorization
-        [Authorize]
+        [Authorize(Users ="admin")] //built-in aythorization
+        [OutputCache(Duration =60)]
         public string Index()
         {
             return "This is the Index action on the Home controller";

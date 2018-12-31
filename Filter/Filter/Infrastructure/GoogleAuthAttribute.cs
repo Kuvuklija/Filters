@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Web.Security;
 using System.Security.Principal;
 using System.Web.Routing;
 using System.Web.Mvc.Filters;
@@ -15,7 +15,7 @@ namespace Filter.Infrastructure
                 filterContext.Result = new HttpUnauthorizedResult();
             }
         }
-
+        //two chalenge: before action List and after List,but before rendering view
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
             if (filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult) {
@@ -24,6 +24,9 @@ namespace Filter.Infrastructure
                 {"action","Login"},
                 {"returnUrl",filterContext.HttpContext.Request.RawUrl}
                 });
+            }
+            else {
+                FormsAuthentication.SignOut(); //after reseting page we have to authorization again, becouse IsAuthenticated=false
             }
         }
     }

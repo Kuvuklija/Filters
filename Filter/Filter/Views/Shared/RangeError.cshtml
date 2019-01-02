@@ -1,0 +1,25 @@
+﻿<!--dog model int-->
+@model HandleErrorInfo
+@{
+    Layout = null;
+    //var count = 0;
+    //var number = Model / count;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RangeError</title>
+</head>
+<body>
+    <h2>Sorry</h2>
+    <!--<span>The value dog Model  was out of the expected range.</span>-->
+    <span>The value @(((ArgumentOutOfRangeException)Model.Exception).ActualValue)  was out of the expected range.</span>
+    <span>Controller: @Model.ControllerName  Action: @Model.ActionName</span>
+    <div>
+        @Html.ActionLink("Change value and try again", "Index");
+    </div>
+</body>
+</html>
